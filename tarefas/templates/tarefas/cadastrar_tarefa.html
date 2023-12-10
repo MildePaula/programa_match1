@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Tarefa</title>
+</head>
+
+<body>
+    <h1>Cadastrar Tarefa</h1>
+
+    {% if request.session.mensagem_erro %}
+    <div class="mensagem-erro">
+        {{ request.session.mensagem_erro}}
+    </div>
+    {% endif %}
+
+    <form method="post" action="{% url 'cadastrar_tarefa' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar Tarefa</button>
+    </form>
+    <br>
+
+    <a href="{% url 'listar_tarefas' %}">Voltar para a lista de tarefas</a>
+</body>
+
+</html>

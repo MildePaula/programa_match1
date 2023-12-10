@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Tarefas</title>
+</head>
+
+<body>
+    <h1>Lista de Tarefas:</h1>
+    <ul>
+        {% for tarefa in tarefas %}
+        <li>
+            {{ tarefa.prioridade }} - {{ tarefa.descricao }} - {{ tarefa.data_vencimento|date:"d/m/Y" }} 
+            <a href="{% url 'excluir_tarefa' tarefa.id %}">Excluir</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'cadastrar_tarefa' %}">Cadastrar uma tarefa!</a>
+</body>
+
+</html>
+
